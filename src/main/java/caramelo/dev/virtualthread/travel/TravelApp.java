@@ -51,11 +51,16 @@ class TravelScope extends StructuredTaskScope<Travel> {
         switch (subtask.state()) {
             case SUCCESS -> {
                 // Pattern Matching para Records
-                if (subtask.get() instanceof RidesharingOffer ro) this.ridesharingOffer = ro;
-                else if (subtask.get() instanceof PublicTransportOffer pto) this.publicTransportOffer = pto;
+                if (subtask.get() instanceof RidesharingOffer ro) {
+                    this.ridesharingOffer = ro;
+                } else if (subtask.get() instanceof PublicTransportOffer pto) {
+                    this.publicTransportOffer = pto;
+                }
             }
             case FAILED -> {
-                if (subtask.exception() instanceof TimeoutException te) this.timeoutException = te;
+                if (subtask.exception() instanceof TimeoutException te) {
+                    this.timeoutException = te;
+                }
             }
         }
     }
